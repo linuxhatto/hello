@@ -22,3 +22,28 @@ spec:
       prune: true
     syncOptions:
     - CreateNamespace=true
+
+---
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: helloworld
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: staging
+  source:
+    path: staging/helloworld/
+    repoURL: https://github.com/linuxhatto/hello.git
+    targetRevision: HEAD
+  destination:
+    namespace: web
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
