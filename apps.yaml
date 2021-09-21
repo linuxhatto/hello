@@ -10,7 +10,7 @@ metadata:
 spec:
   project: staging
   source:
-    path: nginx/
+    path: staging/nginx/
     repoURL: https://github.com/linuxhatto/hello.git
     targetRevision: HEAD
   destination:
